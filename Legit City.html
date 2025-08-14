@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Legit City</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f0f14;
+      color: white;
+      text-align: center;
+    }
+    /* Splash screen */
+    #splash {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #1b1f2b;
+      z-index: 9999;
+      flex-direction: column;
+    }
+    .name {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #fff;
+    }
+    .cursor {
+      display: inline-block;
+      width: 0.5ch;
+      background: #ff9800;
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink {
+      0%, 50% { background: #ff9800; }
+      50%, 100% { background: transparent; }
+    }
+    /* Main page content */
+    main {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      padding: 20px;
+    }
+    main.reveal {
+      opacity: 1;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background-color: #ff9800;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #e68900;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Splash screen -->
+<div id="splash">
+  <div class="name"><span id="typed"></span><span class="cursor"></span></div>
+</div>
+
+<!-- Main content -->
+<main id="content">
+  <h1>Welcome to Legit City</h1>
+  <p>Your journey to mastering trading starts here.</p>
+  <button onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSfb54TXR5NTdtqn31FgiT76Qy0rXLJaOeadh33l41STzgD8Bw/viewform?usp=dialog'">
+    Get Started
+  </button>
+</main>
+
+<script>
+  const text = "Legit City";
+  const typedEl = document.getElementById("typed");
+  const splash = document.getElementById("splash");
+  const content = document.getElementById("content");
+
+  let i = 0;
+  function typeWriter() {
+    if (i < text.length) {
+      typedEl.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 100);
+    } else {
+      setTimeout(() => {
+        splash.style.display = "none";
+        content.classList.add("reveal");
+      }, 500);
+    }
+  }
+  window.onload = typeWriter;
+</script>
+
+</body>
+</html>

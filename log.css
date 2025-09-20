@@ -1,0 +1,11 @@
+.error {
+  color: #ff4d4d;
+  font-size: 0.8rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+input.error-border, select.error-border {
+  border: 2px solid #ff4d4d !important;
+}
